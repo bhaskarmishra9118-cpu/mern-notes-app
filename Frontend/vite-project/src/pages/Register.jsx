@@ -20,7 +20,7 @@ const Register = () => {
     event.preventDefault()
 
     try {
-      await axios.post("http://localhost:4001/auth/register", formData)
+      await axios.post("https://mern-notes-app-48hb.onrender.com/auth/register", formData)
       window.alert("User Registered Successfully")
     } catch (err) {
       console.log(err.response?.data || err.message)

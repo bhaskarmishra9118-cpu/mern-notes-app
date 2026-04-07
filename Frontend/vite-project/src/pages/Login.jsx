@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4001/auth/login",
+        "https://mern-notes-app-48hb.onrender.com/auth/login",
         formData,
         { withCredentials: true }
       )

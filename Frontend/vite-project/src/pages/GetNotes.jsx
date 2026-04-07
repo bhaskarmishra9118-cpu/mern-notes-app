@@ -8,7 +8,7 @@ const GetNotes = () => {
     const getNotes = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4001/notes/getnotes",
+          "https://mern-notes-app-48hb.onrender.com/notes/getnotes",
           { withCredentials: true }
         )
         console.log(res.data)
@@ -26,7 +26,7 @@ const GetNotes = () => {
   const deleteNote = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:4001/notes/deletenote/${id}`,
+        `https://mern-notes-app-48hb.onrender.com/notes/deletenote/${id}`,
         { withCredentials: true }
       )
 

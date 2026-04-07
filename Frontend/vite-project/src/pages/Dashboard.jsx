@@ -9,7 +9,7 @@ const Dashboard = () => {
     const checkNotes = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4001/notes/getnotes",
+          "https://mern-notes-app-48hb.onrender.com/notes/getnotes",
           { withCredentials: true }
         )
 

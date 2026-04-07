@@ -23,7 +23,7 @@ const AddNote = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4001/notes/addnote",
+        "https://mern-notes-app-48hb.onrender.com/notes/addnote",
         formData,
         { withCredentials: true }
       )
