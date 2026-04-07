@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import axios from "axios"
+import { api } from "../lib/api"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const Register = () => {
     event.preventDefault()
 
     try {
-      await axios.post("https://mern-notes-app-48hb.onrender.com/auth/register", formData)
+      await api.post("/auth/register", formData)
       window.alert("User Registered Successfully")
     } catch (err) {
       console.log(err.response?.data || err.message)

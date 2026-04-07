@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
+import { api } from "../lib/api"
 
 const GetNotes = () => {
   const [fetchdata, setfetchdata] = useState([])
@@ -7,10 +7,7 @@ const GetNotes = () => {
   useEffect(() => {
     const getNotes = async () => {
       try {
-        const res = await axios.get(
-          "https://mern-notes-app-48hb.onrender.com/notes/getnotes",
-          { withCredentials: true }
-        )
+        const res = await api.get("/notes/getnotes")
         console.log(res.data)
 
         setfetchdata(Array.isArray(res.data?.notes) ? res.data.notes : [])
@@ -25,10 +22,7 @@ const GetNotes = () => {
 
   const deleteNote = async (id) => {
     try {
-      await axios.delete(
-        `https://mern-notes-app-48hb.onrender.com/notes/deletenote/${id}`,
-        { withCredentials: true }
-      )
+      await api.delete(`/notes/deletenote/${id}`)
 
       setfetchdata((prev) => prev.filter((note) => note._id !== id))
     } catch (err) {

@@ -1,6 +1,6 @@
 import { useState } from "react"
-import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { api } from "../lib/api"
 
 const AddNote = () => {
   const navigate = useNavigate()
@@ -22,11 +22,7 @@ const AddNote = () => {
     event.preventDefault()
 
     try {
-      const res = await axios.post(
-        "https://mern-notes-app-48hb.onrender.com/notes/addnote",
-        formData,
-        { withCredentials: true }
-      )
+      const res = await api.post("/notes/addnote", formData)
 
       console.log(res.data)
       alert("Note created successfully ✅")

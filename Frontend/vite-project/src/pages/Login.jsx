@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import axios from "axios"
+import { api } from "../lib/api"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -21,11 +21,7 @@ const Login = () => {
     event.preventDefault()
 
     try {
-      const res = await axios.post(
-        "https://mern-notes-app-48hb.onrender.com/auth/login",
-        formData,
-        { withCredentials: true }
-      )
+      const res = await api.post("/auth/login", formData)
 
       if (res.data.success) {
         alert("Login successful ✅")

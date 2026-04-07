@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import { api } from "../lib/api"
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -8,10 +8,7 @@ const Dashboard = () => {
   useEffect(() => {
     const checkNotes = async () => {
       try {
-        const res = await axios.get(
-          "https://mern-notes-app-48hb.onrender.com/notes/getnotes",
-          { withCredentials: true }
-        )
+        const res = await api.get("/notes/getnotes")
 
         const notes = Array.isArray(res.data?.notes) ? res.data.notes : []
         if (notes.length > 0) {
