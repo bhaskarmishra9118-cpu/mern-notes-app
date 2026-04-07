@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
 const User = require("../Models/UserRagistration")
 
 const register = async (req, res) => {
@@ -57,23 +56,7 @@ const register = async (req, res) => {
       password: hashedPassword
     })
 
-    // 🔴 8. Generate token
-    const token = jwt.sign(
-      { id: newUser._id, email: newUser.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-      
-    )
-
-    // ✅ 9. Set cookie
-    res.cookie("token", token, {
-      httpOnly: true,          // JS se access nahi hoga (secure)
-      secure: false,           // true in production (HTTPS)
-      sameSite: "Strict",
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
-    })
-
-    // 🔴 10. Send response
+    // 🔴 8. Send response (login endpoint will set auth cookie)
     return res.status(201).json({
       success: true,
       message: "User registered successfully",

@@ -20,7 +20,7 @@ const Register = () => {
     event.preventDefault()
 
     try {
-      await api.post("/auth/register", formData)
+      await api.post("/auth/register", formData, { withCredentials: false })
       window.alert("User Registered Successfully")
     } catch (err) {
       console.log(err.response?.data || err.message)
