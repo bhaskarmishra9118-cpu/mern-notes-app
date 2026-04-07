@@ -29,6 +29,10 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) {
       return callback(null, true)
     }
+    // Allow Vercel preview/production domains when frontend URL changes.
+    if (origin.endsWith(".vercel.app")) {
+      return callback(null, true)
+    }
     return callback(new Error("Not allowed by CORS"))
   },
   credentials: true

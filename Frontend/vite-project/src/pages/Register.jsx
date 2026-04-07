@@ -24,7 +24,9 @@ const Register = () => {
       window.alert("User Registered Successfully")
     } catch (err) {
       console.log(err.response?.data || err.message)
-      if (err.response?.status === 409) {
+      if (!err.response) {
+        alert("Network/CORS error. Check Render CORS_ORIGINS and backend status.")
+      } else if (err.response?.status === 409) {
         alert("Email Already Exist ")
       } else if (err.response?.status === 400 && err.response?.data?.message === "All fields are required") {
         alert("All fields are required")
@@ -50,6 +52,7 @@ const Register = () => {
             type="text"
             placeholder="Enter your name"
             name="name"
+            autoComplete="name"
             className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
@@ -61,6 +64,7 @@ const Register = () => {
             type="email"
             placeholder="Enter your email"
             name="email"
+            autoComplete="email"
             className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
@@ -72,6 +76,7 @@ const Register = () => {
             type="password"
             placeholder="Enter your password"
             name="password"
+            autoComplete="new-password"
             className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />

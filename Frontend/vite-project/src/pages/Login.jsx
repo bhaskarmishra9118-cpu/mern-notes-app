@@ -29,7 +29,11 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err)
-      alert("Login failed ❌")
+      if (!err.response) {
+        alert("Network/CORS error. Check backend URL and Render CORS_ORIGINS.")
+      } else {
+        alert("Login failed ❌")
+      }
     }
   }
 
@@ -47,6 +51,7 @@ const Login = () => {
             type="email"
             placeholder="Enter your email"
             name="email"
+            autoComplete="email"
             className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
@@ -58,6 +63,7 @@ const Login = () => {
             type="password"
             placeholder="Enter your password"
             name="password"
+            autoComplete="current-password"
             className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
