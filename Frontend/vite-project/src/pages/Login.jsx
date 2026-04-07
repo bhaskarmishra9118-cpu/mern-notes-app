@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const Login = () => {
-
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -23,7 +22,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:4001/auth/login',
+        "http://localhost:4001/auth/login",
         formData,
         { withCredentials: true }
       )
@@ -32,7 +31,6 @@ const Login = () => {
         alert("Login successful ✅")
         navigate("/dashboard")
       }
-
     } catch (err) {
       console.log(err)
       alert("Login failed ❌")
@@ -40,51 +38,48 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center items-center h-screen bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 m-3 rounded-lg shadow-md'>
-      
-      <form 
-        onSubmit={login} 
-        className='p-7 bg-white rounded-lg shadow-lg border-y-black px-15'
+    <div className="m-3 flex h-screen items-center justify-center rounded-lg bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 shadow-md">
+      <form
+        onSubmit={login}
+        className="border-y-black bg-white p-7 px-15 shadow-lg rounded-lg"
       >
-        
-        <h1 className='p-3 px-20 py-5 font-bold'>Login</h1>
+        <h1 className="p-3 px-20 py-5 font-bold">Login</h1>
 
-        <div className='flex flex-col mb-2'>
+        <div className="mb-2 flex flex-col">
           <label>Email:</label>
           <input
             type="email"
             placeholder="Enter your email"
             name="email"
-            className="border-2 border-gray-300 rounded-md p-2 mb-4"
+            className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
         </div>
 
-        <div className='flex flex-col mb-2'>
+        <div className="mb-2 flex flex-col">
           <label>Password:</label>
           <input
             type="password"
             placeholder="Enter your password"
             name="password"
-            className="border-2 border-gray-300 rounded-md p-2 mb-4"
+            className="mb-4 rounded-md border-2 border-gray-300 p-2"
             onChange={change}
           />
         </div>
 
-        <button 
-          type='submit'
-          className='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300'
+        <button
+          type="submit"
+          className="rounded-md bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600"
         >
           Submit
         </button>
 
-        <p className='mt-4 text-sm text-gray-600'>
-          Don't have an account? 
-          <Link to="/register" className='text-blue-500 hover:underline'>
+        <p className="mt-4 text-sm text-gray-600">
+          Don't have an account?
+          <Link to="/register" className="text-blue-500 hover:underline">
             Register here
           </Link>
         </p>
-
       </form>
     </div>
   )

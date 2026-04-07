@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-const Addnote = () => {
-
+const AddNote = () => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -38,8 +37,7 @@ const Addnote = () => {
         info: ""
       })
 
-      navigate("/getnotes") // 🔥 redirect
-
+      navigate("/getnotes")
     } catch (err) {
       console.log(err.response?.data || err.message)
       alert("Error creating note ❌")
@@ -47,52 +45,49 @@ const Addnote = () => {
   }
 
   return (
-    <div className='m-5 flex justify-center items-center min-h-screen'>
-      
-      <form 
-        onSubmit={handleSubmit} 
-        className='border-2 border-gray-500 rounded-2xl p-6 shadow-md w-96'
+    <div className="m-5 flex min-h-screen items-center justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="w-96 rounded-2xl border-2 border-gray-500 p-6 shadow-md"
       >
-
-        <h2 className='text-xl font-bold mb-4'>Add Note</h2>
+        <h2 className="mb-4 text-xl font-bold">Add Note</h2>
 
         <label>Title</label><br />
-        <input 
+        <input
           type="text"
-          name='Title'
+          name="Title"
           value={formData.Title}
           onChange={handleChange}
-          className='border p-2 w-full mb-3'
+          className="mb-3 w-full border p-2"
         />
 
-        <label>Description</label><br/>
-        <input 
+        <label>Description</label><br />
+        <input
           type="text"
-          name='description'
+          name="description"
           value={formData.description}
           onChange={handleChange}
-          className='border p-2 w-full mb-3'
+          className="mb-3 w-full border p-2"
         />
 
-        <label>Info</label><br/>
-        <input 
+        <label>Info</label><br />
+        <input
           type="text"
-          name='info'
+          name="info"
           value={formData.info}
           onChange={handleChange}
-          className='border p-2 w-full mb-4'
+          className="mb-4 w-full border p-2"
         />
 
-        <button 
+        <button
           type="submit"
-          className='bg-blue-500 text-white px-4 py-2 rounded w-full'
+          className="w-full rounded bg-blue-500 px-4 py-2 text-white"
         >
           Add Note
         </button>
-
       </form>
     </div>
   )
 }
 
-export default Addnote
+export default AddNote

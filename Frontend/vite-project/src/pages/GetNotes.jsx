@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react"
+import axios from "axios"
 
-const Getnote = () => {
-
+const GetNotes = () => {
   const [fetchdata, setfetchdata] = useState([])
 
   useEffect(() => {
@@ -15,7 +14,6 @@ const Getnote = () => {
         console.log(res.data)
 
         setfetchdata(Array.isArray(res.data?.notes) ? res.data.notes : [])
-
       } catch (err) {
         console.log(err)
         alert("Please login again")
@@ -33,13 +31,11 @@ const Getnote = () => {
       )
 
       setfetchdata((prev) => prev.filter((note) => note._id !== id))
-
     } catch (err) {
       console.log(err)
       alert("Delete failed ❌")
     }
-    
-   }
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 px-4 py-8">
@@ -95,4 +91,4 @@ const Getnote = () => {
   )
 }
 
-export default Getnote
+export default GetNotes

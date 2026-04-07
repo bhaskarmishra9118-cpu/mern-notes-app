@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 const Dashboard = () => {
-
   const navigate = useNavigate()
 
   useEffect(() => {
-
     const checkNotes = async () => {
       try {
         const res = await axios.get(
@@ -21,15 +19,13 @@ const Dashboard = () => {
         } else {
           navigate("/addnote")
         }
-
       } catch (err) {
         navigate("/login")
       }
     }
 
     checkNotes()
-
-  }, [])
+  }, [navigate])
 
   return <h1>Loading...</h1>
 }
