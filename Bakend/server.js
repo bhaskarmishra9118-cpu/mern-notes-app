@@ -12,7 +12,10 @@ const Login=require("./Routes/LoginRoutes")
 database()
 app.set("trust proxy", 1)
 
-const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:5173")
+const allowedOrigins = (
+  process.env.CORS_ORIGINS ||
+  "http://localhost:5173,https://mern-notes-app-black.vercel.app"
+)
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean)
